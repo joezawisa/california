@@ -17,6 +17,9 @@ private:
     const int StepsPerRevolution; // Steps Per Revolution
     
     int current; // Current Step
+    
+    // Go to a step
+    void step(const int sequence);
 };
 
 #endif
