@@ -7,7 +7,16 @@
 #include "Arduino.h"
 #include "Stepper.h"
 
-Stepper::Stepper(const int _StepsPerRevolution, const int _PinA, const int _PinB, const int _PinC, const int _PinD) : PinA(_PinA), PinB(_PinB), PinC(_PinC), PinD(_PinD), StepsPerRevolution(_StepsPerRevolution) {}
+Stepper::Stepper(const int _StepsPerRevolution, const int _PinA, const int _PinB, const int _PinC, const int _PinD) : PinA(_PinA), PinB(_PinB), PinC(_PinC), PinD(_PinD), StepsPerRevolution(_StepsPerRevolution) {
+    // Configure I/O pins
+    pinMode(PinA, OUTPUT);
+    pinMode(PinB, OUTPUT);
+    pinMode(PinC, OUTPUT);
+    pinMode(PinD, OUTPUT);
+    
+    // Start on step 1
+    step(current = 1);
+}
 
 // Go to a step
 void Stepper::step(const int sequence) {
