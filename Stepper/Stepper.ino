@@ -16,6 +16,12 @@ void loop() {
       case 'R': { // Rotate
         motor.rotate(Serial.parseInt());
         Serial.println("OK");
+        break;
+      }
+      case 'V': { // Revolve
+        motor.revolve(bool(Serial.parseInt()));
+        Serial.println("OK");
+        break;
       }
     }
   }

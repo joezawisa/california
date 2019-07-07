@@ -15,6 +15,9 @@ public:
     // Rotate a specified number of steps
     void rotate(const int numberOfSteps);
     
+    // Rotate the motor one revolution
+    void revolve(const bool direction);
+    
 private:
     const int PinA, PinB; // Pins A and B are on the same coil
     const int PinC, PinD; // Pins C and D are on the same coil

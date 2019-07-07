@@ -80,3 +80,13 @@ void Stepper::rotate(const int numberOfSteps) {
         delay(pause);
     }
 }
+
+// Rotate the motor one revolution
+void Stepper::revolve(const bool direction) {
+    if(direction) {
+        rotate(StepsPerRevolution);
+    }
+    else {
+        rotate(-StepsPerRevolution);
+    }
+}
