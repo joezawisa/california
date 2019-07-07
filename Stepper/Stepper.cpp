@@ -19,7 +19,7 @@ Stepper::Stepper(const int _StepsPerRevolution, const int _PinA, const int _PinB
     set(step = 0);
     
     // Set delay
-    pause = 3;
+    pause = 10;
 }
 
 // Set the motor to a particular stepping sequence
@@ -62,8 +62,21 @@ void Stepper::set(const int sequence) {
 
 // Rotate a specified number of steps
 void Stepper::rotate(const int numberOfSteps) {
-    for(int i = 0; i < numberOfSteps; ++i) {
-        set(++step % 4);
+    // Count up to the right number of steps
+    for(int i = 0; i < abs(numberOfSteps); ++i) {
+        // Update the current step
+        if(numberOfSteps > 0) {
+            ++step;
+            if(step == StepsPerRevolution) step = 0;
+        } else {
+            --step;
+            if(step < 0) step = StepsPerRevolution - 1;
+        }
+        
+        // Set the motor to the right sequence
+        set(step % 4);
+        
+        // Keep the right speed
         delay(pause);
     }
 }
