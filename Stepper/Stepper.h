@@ -9,6 +9,7 @@
 
 class Stepper {
 public:
+    // Constructor
     Stepper(const int _StepsPerRevolution, const int _PinA, const int _PinB, const int _PinC, const int _PinD);
     
     // Rotate a specified number of steps
