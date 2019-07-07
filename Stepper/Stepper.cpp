@@ -16,7 +16,7 @@ Stepper::Stepper(const int _StepsPerRevolution, const int _PinA, const int _PinB
     pinMode(PinD, OUTPUT);
     
     // Start on step 0
-    set(current = 0);
+    set(step = 0);
     
     // Set delay
     pause = 3;
@@ -63,7 +63,7 @@ void Stepper::set(const int sequence) {
 // Rotate a specified number of steps
 void Stepper::rotate(const int numberOfSteps) {
     for(int i = 0; i < numberOfSteps; ++i) {
-        set(++current % 4);
+        set(++step % 4);
         delay(pause);
     }
 }

@@ -20,7 +20,7 @@ private:
     const int PinC, PinD; // Pins C and D are on the same coil
     const int StepsPerRevolution; // Steps Per Revolution
     
-    int current; // Current Step
+    int step; // Current Step
     int pause; // Milliseconds to pause between each step
     
     // Set the motor to a particular stepping sequence
