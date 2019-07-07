@@ -23,8 +23,8 @@ private:
     int current; // Current Step
     int pause; // Milliseconds to pause between each step
     
-    // Go to a step
-    void step(const int sequence);
+    // Set the motor to a particular stepping sequence
+    void set(const int sequence);
 };
 
 #endif

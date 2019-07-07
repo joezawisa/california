@@ -16,14 +16,14 @@ Stepper::Stepper(const int _StepsPerRevolution, const int _PinA, const int _PinB
     pinMode(PinD, OUTPUT);
     
     // Start on step 0
-    step(current = 0);
+    set(current = 0);
     
     // Set delay
     pause = 3;
 }
 
-// Go to a step
-void Stepper::step(const int sequence) {
+// Set the motor to a particular stepping sequence
+void Stepper::set(const int sequence) {
     switch(sequence) {
         case 0: { // Step 0
             digitalWrite(PinA, HIGH);
@@ -63,7 +63,7 @@ void Stepper::step(const int sequence) {
 // Rotate a specified number of steps
 void Stepper::rotate(const int numberOfSteps) {
     for(int i = 0; i < numberOfSteps; ++i) {
-        step(++current % 4);
+        set(++current % 4);
         delay(pause);
     }
 }
