@@ -10,4 +10,4 @@ Using a serial monitor, one-letter commands can be sent to the machine.
 S <mmPerSecond>
 ~~~
 
-Sets the speed of the motor in **millimeters per second**.
+Sets the speed of the motor in *millimeters per second*.
