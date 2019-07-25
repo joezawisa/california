@@ -8,7 +8,7 @@
 #include "Stepper.h"
 
 // Constructor
-Stepper::Stepper(const int _StepsPerRevolution, const int _PinA, const int _PinB, const int _PinC, const int _PinD) : PinA(_PinA), PinB(_PinB), PinC(_PinC), PinD(_PinD), StepsPerRevolution(_StepsPerRevolution) {
+Stepper::Stepper(const int _StepsPerRevolution, const int _StepsPerMM, const int _PinA, const int _PinB, const int _PinC, const int _PinD) : PinA(_PinA), PinB(_PinB), PinC(_PinC), PinD(_PinD), StepsPerRevolution(_StepsPerRevolution), StepsPerMM(_StepsPerMM) {
     // Configure I/O pins
     pinMode(PinA, OUTPUT);
     pinMode(PinB, OUTPUT);
@@ -81,12 +81,22 @@ void Stepper::rotate(const int numberOfSteps) {
     }
 }
 
-// Rotate the motor one revolution
-void Stepper::revolve(const bool direction) {
-    if(direction) {
-        rotate(StepsPerRevolution);
-    }
-    else {
-        rotate(-StepsPerRevolution);
+// Rotate the motor a specified number of revolutions
+void Stepper::revolve(const double numberOfRevs) {
+    rotate(floor(numberOfRevs * StepsPerRevolution));
+}
+
+// Rotate the motor a specified number of mm
+void Stepper::move(const double distance) {
+    rotate(floor(distance * StepsPerMM));
+}
+
+// Power the motor with a square wave
+void Stepper::square(const double distance, const int hold, const int cycles) {
+    for(int i = 0; i < cycles; ++i) {
+        move(distance);
+        delay(hold);
+        move(-distance);
+        delay(hold);
     }
 }
