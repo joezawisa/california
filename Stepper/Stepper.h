@@ -12,6 +12,9 @@ public:
     // Constructor
     Stepper(const int _StepsPerRevolution, const int _StepsPerMM, const int _PinA, const int _PinB, const int _PinC, const int _PinD);
     
+    // Set the motor's speed
+    void speed(const int mmPerSecond);
+    
     // Rotate a specified number of steps
     void rotate(const int numberOfSteps);
     

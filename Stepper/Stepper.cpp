@@ -60,6 +60,12 @@ void Stepper::set(const int sequence) {
     }
 }
 
+// Set the motor's speed
+void Stepper::speed(int mmPerSecond) {
+    if(mmPerSecond > 31) mmPerSecond = 31; // Max is 31 mm/s
+    pause =  1000 / (mmPerSecond * StepsPerMM);
+}
+
 // Rotate a specified number of steps
 void Stepper::rotate(const int numberOfSteps) {
     // Count up to the right number of steps

@@ -1,6 +1,6 @@
 #include "Stepper.h"
 
-Stepper motor(200, 25, 2, 3, 4, 5);
+Stepper motor(200, 8, 2, 3, 4, 5);
 
 void setup() {
   // Put you setup code here
@@ -13,13 +13,31 @@ void loop() {
     char command = Serial.read();
     
     switch(command) {
-      case 'S': { // Rotate
+      case 'S': { // Speed
+        motor.speed(Serial.parseInt());
+        Serial.println("OK");
+        break;
+      }
+      case 'R': { // Rotate
         motor.rotate(Serial.parseInt());
         Serial.println("OK");
         break;
       }
       case 'V': { // Revolve
         motor.revolve(Serial.parseInt());
+        Serial.println("OK");
+        break;
+      }
+      case 'M': { // Move
+        motor.move(Serial.parseFloat());
+        Serial.println("OK");
+        break;
+      }
+      case 'Q': { // Square
+        double distance = Serial.parseFloat();
+        int hold = Serial.parseInt();
+        int cycles = Serial.parseInt();
+        motor.square(distance, hold, cycles);
         Serial.println("OK");
         break;
       }
