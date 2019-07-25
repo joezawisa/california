@@ -39,4 +39,5 @@ Powers the motor with a square wave. Repeats `<cycles>` times:
 2. Pause for `<hold>` milliseconds.
 3. Move -`<distance>` millimeters.
 4. Pause for `<hold>` milliseconds.
+
 Accepts positive or negative values for `<distance>` and only positive values for `<hold>` and `<cycles>`.
