@@ -1,6 +1,6 @@
 #include "Stepper.h"
 
-Stepper motor(200, 8, 2, 3, 4, 5);
+Stepper motor(200, 8, 5, 4, 2, 3);
 
 void setup() {
   // Put you setup code here
@@ -39,6 +39,10 @@ void loop() {
         int cycles = Serial.parseInt();
         motor.square(distance, hold, cycles);
         Serial.println("OK");
+        break;
+      }
+      case 'E': { // End Serial Communication
+        Serial.end();
         break;
       }
     }
