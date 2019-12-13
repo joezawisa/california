@@ -1,4 +1,4 @@
-# California
+# Heartbeat Simulator
 Stepper Motor Control
 
 by Joe Zawisa
