@@ -25,7 +25,7 @@ public:
     void move(const double distance);
     
     // Power the motor with a square wave
-    void square(const double distance, const int hold, const int cycles);
+    void square(const double distance, const int hold, const long cycles);
     
 private:
     const int PinA, PinB; // Pins A and B are on the same coil

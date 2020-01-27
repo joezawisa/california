@@ -98,8 +98,8 @@ void Stepper::move(const double distance) {
 }
 
 // Power the motor with a square wave
-void Stepper::square(const double distance, const int hold, const int cycles) {
-    for(int i = 0; i < cycles; ++i) {
+void Stepper::square(const double distance, const int hold, const long cycles) {
+    for(long i = 0; i < cycles; ++i) {
         move(distance);
         delay(hold);
         move(-distance);
