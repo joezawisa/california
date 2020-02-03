@@ -35,8 +35,9 @@ void loop() {
       }
       case 'Q': { // Square
         double distance = Serial.parseFloat();
-        int hold = Serial.parseInt();
-        int cycles = Serial.parseInt();
+        //int hold = Serial.parseInt();
+        unsigned long int hold = strtoul(Serial.readString().c_str(), NULL, 10);
+        int cycles = strtoul(Serial.readString().c_str(), NULL, 10);
         motor.square(distance, hold, cycles);
         Serial.println("OK");
         break;
