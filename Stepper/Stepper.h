@@ -1,11 +1,11 @@
 //
-// California
+// Heartbeat
 // Stepper.h
 // by Joe Zawisa
 //
 
-#ifndef JZ_CALIFORNIA
-#define JZ_CALIFORNIA
+#ifndef JZ_HEARTBEAT
+#define JZ_HEARTBEAT
 
 class Stepper {
 public:
@@ -13,7 +13,7 @@ public:
     Stepper(const int _StepsPerRevolution, const int _StepsPerMM, const int _PinA, const int _PinB, const int _PinC, const int _PinD);
     
     // Set the motor's speed
-    void speed(const int mmPerSecond);
+    void setSpeed(const int mmPerSecond);
     
     // Rotate a specified number of steps
     void rotate(const int numberOfSteps);
@@ -26,6 +26,9 @@ public:
     
     // Power the motor with a square wave
     void square(const double distance, const unsigned long int hold, const unsigned long int cycles);
+
+    // Power the motor at a specified frequency
+    void frequency(const double distance, const double frequency, const double hours);
     
 private:
     const int PinA, PinB; // Pins A and B are on the same coil

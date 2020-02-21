@@ -1,5 +1,5 @@
 //
-// California
+// Heartbeat
 // Stepper.cpp
 // by Joseph Zawisa
 //
@@ -61,9 +61,9 @@ void Stepper::set(const int sequence) {
 }
 
 // Set the motor's speed
-void Stepper::speed(int mmPerSecond) {
+void Stepper::setSpeed(int mmPerSecond) {
     if(mmPerSecond > 31) mmPerSecond = 31; // Max is 31 mm/s
-    pause =  1000 / (mmPerSecond * StepsPerMM);
+    pause = 1000 / (mmPerSecond * StepsPerMM);
 }
 
 // Rotate a specified number of steps
@@ -99,10 +99,23 @@ void Stepper::move(const double distance) {
 
 // Power the motor with a square wave
 void Stepper::square(const double distance, const unsigned long int hold, const unsigned long int cycles) {
-    for(long i = 0; i < cycles; ++i) {
+    for(unsigned long int i = 0; i < cycles; ++i) {
         move(distance);
         delay(hold);
         move(-distance);
         delay(hold);
     }
+}
+
+// Power the motor at a specified frequency
+void Stepper::frequency(const double distance, const double frequency, const double hours) {
+  const double hold = 1; // Hold for 1 ms
+  double period = 1000 / frequency; // Period for back/forth movement
+  double moveTime = (period - (2 * hold)) / 2; // Time to move each direction
+  double speed = distance / moveTime * 1000; // Speed at which to move
+  setSpeed(speed); // Set the speed
+  double cycles = frequency * 3600 * hours; // 3600 seconds/hour * hours
+
+  // Start a square wave
+  square(distance, hold, cycles);
 }

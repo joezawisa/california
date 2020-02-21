@@ -14,7 +14,7 @@ void loop() {
     
     switch(command) {
       case 'S': { // Speed
-        motor.speed(Serial.parseInt());
+        motor.setSpeed(Serial.parseInt());
         Serial.println("OK");
         break;
       }
@@ -35,12 +35,19 @@ void loop() {
       }
       case 'Q': { // Square
         double distance = Serial.parseFloat();
-        //int hold = Serial.parseInt();
-        unsigned long int hold = strtoul(Serial.readString().c_str(), NULL, 10);
-        int cycles = strtoul(Serial.readString().c_str(), NULL, 10);
+        Serial.read(); // Ignore a space
+        unsigned long int hold = strtoul(Serial.readStringUntil(' ').c_str(), NULL, 10);
+        unsigned long int cycles = strtoul(Serial.readStringUntil(' ').c_str(), NULL, 10);
         motor.square(distance, hold, cycles);
         Serial.println("OK");
         break;
+      }
+      case 'F': { // Frequency
+        double distance = Serial.parseFloat();
+        double frequency = Serial.parseFloat();
+        double hours = Serial.parseFloat();
+        
+        motor.frequency(distance, frequency, hours);
       }
       case 'E': { // End Serial Communication
         Serial.end();

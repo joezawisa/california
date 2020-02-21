@@ -35,9 +35,15 @@ Moves the motor `<distance>` millimeters. Accepts positive and negative values.
 Q <distance> <hold> <cycles>
 ~~~
 Powers the motor with a square wave. Repeats `<cycles>` times:
-1. Move +`<distance>` millimeters.
+1. Move + `<distance>` millimeters.
 2. Pause for `<hold>` milliseconds.
-3. Move -`<distance>` millimeters.
+3. Move - `<distance>` millimeters.
 4. Pause for `<hold>` milliseconds.
 
 Accepts positive or negative values for `<distance>` and only positive values for `<hold>` and `<cycles>`.
+
+### Frequency
+~~~
+F <distance> <frequency> <hours>
+~~~
+Powers the motor with a square wave at a specified frequency for the given number of hours.
