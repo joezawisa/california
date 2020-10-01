@@ -1,6 +1,6 @@
 #include "Stepper.h"
 
-Stepper motor(200, 8, 5, 4, 2, 3);
+Stepper motor(200, 8, 11, 10, 9, 8);
 
 void setup() {
   // Put you setup code here
